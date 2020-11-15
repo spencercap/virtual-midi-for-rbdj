@@ -198,17 +198,16 @@ inputMidi.on('noteon', function (msg) {
                 outputRDJ.send('cc', {
                     channel: 0,
                     controller: 11,
-                    value: 0,
+                    value: 0, // mutes
                 });
             } else {
                 console.log('unmute');
-
                 console.log('got back to:', decks.a.eq.mid);
 
                 outputRDJ.send('cc', {
                     channel: 0,
                     controller: 11,
-                    value: decks.a.eq.mid
+                    value: decks.a.eq.mid || 63 // in theres not old val, go to middle
                 });
             }
         }
